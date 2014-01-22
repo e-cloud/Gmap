@@ -8,13 +8,34 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
 
+    <!-- 步骤（3）设置使用Google Map服务所需的许可 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Google Map是互联网业务，允许互联网 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许API检查网络连接状态，已确定是否可以下载数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许将Google地图数据缓存在SD卡上 -->
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" /> <!-- 允许API访问Google的基于Web的业务 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 地图应用经常和定位相关，允许粗定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 允许精确定位 -->
+
+
+    <!-- 步骤（4）Google Map v2需要OpenGL ES，需要用uses-feature中声明 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAIoty7Y3_S45pQyRoz5qdCKJC4U-eQPqo" />
+
         <activity
-            android:name="com.example.gmap.MainActivity"
+            android:name="com.example.gmap.MapActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
